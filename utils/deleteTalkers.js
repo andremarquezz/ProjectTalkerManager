@@ -1,1 +1,1 @@
-const deleteTalkers = () => {};
+// const deleteTalkers = () => {};
