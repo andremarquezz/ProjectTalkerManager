@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/github/issues/andremarquezz/ProjectTalkerManager"/> <img src="https://img.shields.io/github/forks/andremarquezz/ProjectTalkerManager"/> <img src="https://img.shields.io/github/stars/andremarquezz/ProjectTalkerManager"/> <img src="https://img.shields.io/github/license/andremarquezz/ProjectTalkerManager"/>
+
 <h1 align="center">Projeto Talker Manager</h1>
 <p align="center">Uma aplicação de cadastro de talkers (palestrantes) em que é possível cadastrar, visualizar, pesquisar, editar e excluir informações.!</p>
 
