@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.get('/', (_request, response) => {
 app.use('/talker', talkerRouter);
 
 app.use((err, _req, res, _next) => {
-  res.status(500).json({ error: err });
+  res.status(err.code || 500).json({ message: err.message });
 });
 
 app.listen(PORT, () => {

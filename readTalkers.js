@@ -1,11 +1,12 @@
 const fs = require('fs/promises');
+const { CustomErrors } = require('./Errors/CustomErrors');
 
 const readTalkers = async (_req, res, next) => {
   try {
     const data = await fs.readFile('./talker.json', 'utf8');
     res.locals.data = JSON.parse(data);
   } catch (err) {
-    console.log(err);
+    throw new CustomErrors('Erro na leitura do arquivo', 400);
   }
   next();
 };
