@@ -2,6 +2,8 @@ const fs = require('fs/promises');
 const path = require('path');
 const { CustomErrors } = require('../Errors/CustomErrors');
 
+// findIndex > https://stackoverflow.com/questions/35206125/how-can-i-find-and-update-values-in-an-array-of-objects
+
 const saveDataEdited = async (data) => {
   await fs.writeFile(
     path.resolve(__dirname, '../talker.json'),

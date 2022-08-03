@@ -32,9 +32,13 @@ router
     }
     return res.status(200).send(response);
   })
-  .put(authToken, validCreateTalker, readTalkers, handleEditTalkers, (_req, res) => {
+  .put(authToken, readTalkers, validCreateTalker, handleEditTalkers, (_req, res) => {
     const { editedTalker } = res.locals;
-    res.status(200).json({ editedTalker });
+    res.status(200).json({ ...editedTalker });
+  })
+  .delete(authToken, readTalkers, (req, res) => {
+    // const { id } = req.params;
+    res.status(204).end();
   });
 
 module.exports = router;
