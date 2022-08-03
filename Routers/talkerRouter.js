@@ -15,7 +15,7 @@ router
     const response = data.length === DATA_EMPTY ? [] : data;
     return res.status(200).send(response);
   })
-  .post(authToken, validCreateTalker, writeTalkers, (_req, res) => {
+  .post(authToken, validCreateTalker, readTalkers, writeTalkers, (_req, res) => {
     const { newTalker } = res.locals;
     res.status(201).json(newTalker);
   });
