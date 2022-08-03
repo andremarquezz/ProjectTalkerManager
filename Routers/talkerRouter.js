@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { authToken } = require('../Middlewares/authToken');
 const { validCreateTalker } = require('../Middlewares/validCreateTalker');
+const { deleteTalkers } = require('../utils/deleteTalkers');
 const { handleEditTalkers } = require('../utils/editTalkers');
 const { readTalkers } = require('../utils/readTalkers');
 const { writeTalkers } = require('../utils/writeTalkers');
@@ -36,8 +37,7 @@ router
     const { editedTalker } = res.locals;
     res.status(200).json({ ...editedTalker });
   })
-  .delete(authToken, readTalkers, (req, res) => {
-    // const { id } = req.params;
+  .delete(authToken, readTalkers, deleteTalkers, (req, res) => {
     res.status(204).end();
   });
 
