@@ -11,4 +11,12 @@ router.get('/', readTalkers, (_req, res) => {
   return res.status(200).send(response);
 });
 
+router.get('/:id', readTalkers, (req, res) => {
+  const { id } = req.params;
+  const { data } = res.locals;
+  const response = data.filter((talker) => talker.id === Number(id))[0];
+  if (!response) return res.status(404).json({ message: 'Pessoa palestrante não encontrada' }); 
+  return res.status(200).send(response);
+});
+
 module.exports = router;
