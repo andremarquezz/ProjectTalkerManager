@@ -22,6 +22,15 @@ router
     res.status(201).json(newTalker);
   });
 
+router.get('/search', authToken, readTalkers, (req, res) => {
+  const { q: searchTerm } = req.query;
+  const { data } = res.locals;
+  if (!searchTerm) return res.status(200).json(data);
+  const dateFiltered = data.filter((talker) => talker.name.includes(searchTerm));
+  if (!dateFiltered) return res.status(200).send([]);
+  return res.status(200).send(dateFiltered);
+});
+
 router
   .route('/:id')
   .get(readTalkers, (req, res) => {
