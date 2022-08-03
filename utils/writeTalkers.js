@@ -2,6 +2,13 @@ const fs = require('fs/promises');
 const path = require('path');
 const { CustomErrors } = require('../Errors/CustomErrors');
 
+const saveTalkerCreated = async (data) => {
+  await fs.writeFile(
+    path.resolve(__dirname, '../talker.json'),
+    JSON.stringify(data, null, 2),
+  );
+};
+
 const writeTalkers = async (req, res, next) => {
   const { name, age, talk } = req.body;
   const { data } = res.locals;
@@ -13,11 +20,9 @@ const writeTalkers = async (req, res, next) => {
       talk,
     };
     data.push(newTalker);
-    console.log(data);
     res.locals.newTalker = newTalker;
-    await fs.writeFile(path.resolve(__dirname, '../talker.json'), JSON.stringify(data, null, 2));
+    saveTalkerCreated(data);
   } catch (err) {
-    console.log({ err });
     throw new CustomErrors('Erro na escrita do arquivo', 400);
   }
   next();
