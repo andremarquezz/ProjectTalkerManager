@@ -20,7 +20,9 @@ router
     res.status(201).json(newTalker);
   });
 
-router.route('/:id').get(readTalkers, (req, res) => {
+router
+  .route('/:id')
+  .get(readTalkers, (req, res) => {
   const { id } = req.params;
   const { data } = res.locals;
   const response = data.filter((talker) => talker.id === Number(id))[0];
