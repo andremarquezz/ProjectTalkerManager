@@ -16,12 +16,12 @@ const validAgeTalker = (age, res) => {
 
 const validTalkWatchedAt = (talk, res) => {
   const { watchedAt } = talk;
-  const re = /^\w+(\[\+\.-\]?\w)*@\w+(\[\.-\]?\w+)*\.[a-z]+$/i;
-  const validDate = re.test(watchedAt);
+  const regex = /^\d{2}\/\d{2}\/\d{4}$/;
+  const validDate = regex.test(watchedAt);
   if (!watchedAt) {
     return res.status(400).json({ message: 'O campo "watchedAt" é obrigatório' });
   }
-  if (validDate) {
+  if (!validDate) {
     return res
       .status(400)
       .json({ message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"' });
