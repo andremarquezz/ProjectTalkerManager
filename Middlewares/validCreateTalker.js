@@ -24,7 +24,7 @@ const validTalkWatchedAt = (talk, res) => {
   if (validDate) {
     return res
       .status(400)
-      .json({ message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa' });
+      .json({ message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"' });
   }
 };
 
@@ -43,8 +43,8 @@ const validCreateTalker = (req, res, next) => {
   if (!talk) return res.status(400).json({ message: 'O campo "talk" é obrigatório' });
   validNameTalker(name, res);
   validAgeTalker(age, res);
-  validTalkWatchedAt(talk, res);
   validTalkRate(talk, res);
+  validTalkWatchedAt(talk, res);
   next();
 };
 
