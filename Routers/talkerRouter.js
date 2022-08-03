@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 const { authToken } = require('../Middlewares/authToken');
 const { validCreateTalker } = require('../Middlewares/validCreateTalker');
-const { readTalkers } = require('../readTalkers');
+const { readTalkers } = require('../utils/readTalkers');
+const { writeTalkers } = require('../utils/writeTalkers');
 
 const DATA_EMPTY = 0;
 
@@ -14,9 +15,9 @@ router
     const response = data.length === DATA_EMPTY ? [] : data;
     return res.status(200).send(response);
   })
-  .post(authToken, validCreateTalker, (req, res) => {
-    const talkerCreated = { message: 'ok' };
-    res.status(201).json(talkerCreated);
+  .post(authToken, validCreateTalker, writeTalkers, (_req, res) => {
+    const { newTalker } = res.locals;
+    res.status(201).json(newTalker);
   });
 
 router.route('/:id').get(readTalkers, (req, res) => {
