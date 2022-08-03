@@ -1,9 +1,13 @@
 const express = require('express');
 
 const router = express.Router();
+const { readTalkers } = require('../readTalkers');
 
-const talkers = require('../talker.json');
+const DATA_EMPTY = 0;
 
-router.get('/', (_req, res) => res.status(200).send(talkers));
+router.get('/', readTalkers, (_req, res) => {
+  const { payload } = res.locals;
+  res.status(200).send(payload === DATA_EMPTY ? [] : payload);
+});
 
 module.exports = router;

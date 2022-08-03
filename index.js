@@ -1,6 +1,7 @@
 const express = require('express');
 
 const app = express();
+
 app.use(express.json());
 
 const talkerRouter = require('./Routers/talkerRouter');
@@ -14,6 +15,10 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/talker', talkerRouter);
+
+app.use((err, _req, res, _next) => {
+  res.status(500).json({ error: err });
+});
 
 app.listen(PORT, () => {
   console.log('Online');
