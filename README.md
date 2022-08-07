@@ -9,6 +9,8 @@
 
 • [Sobre o Projeto](#-sobre-o-projeto)
 
+• [Tecnologias e Bibliotecas](#-tecnologias-e-bibliotecas-utilizadas-no-desenvolvimento-do-projeto)
+
 • [Como executar o projeto](#-como-executar-o-projeto)
 
 ### 📃 Sobre o Projeto
